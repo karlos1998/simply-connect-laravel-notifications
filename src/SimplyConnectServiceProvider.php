@@ -8,17 +8,25 @@ use Illuminate\Support\Facades\Notification;
 
 class SimplyConnectServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
-        Notification::resolved(function (ChannelManager $service) {
-            $service->extend('simply', function ($app) {
-                return new Channels\SimplyConnectChannel;
-            });
-        });
+        Notification::resolved(
+            fn (ChannelManager $service) =>
+            $service->extend(
+                'simply-connect',
+                fn ($app) => new Channels\SimplyConnectChannel
+            )
+        );
+
+        $this->publishes([
+            __DIR__.'/config/simply_connect.php' => config_path('simply_connect.php'),
+        ], 'config');
     }
 
-    public function register()
+    public function register(): void
     {
-        // Register any package services here
+        $this->mergeConfigFrom(
+            __DIR__.'/config/simply_connect.php', 'simply-connect'
+        );
     }
 }

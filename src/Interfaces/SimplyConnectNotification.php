@@ -2,7 +2,7 @@
 
 namespace Karlos3098\SimplyConnectLaravelNotifications\Interfaces;
 
-use Karlos3098\SimplyConnectLaravelNotifications\Messages\SimplyConnectMessage;
+use Karlos3098\SimplyConnectLaravelNotifications\Services\SimplyConnectMessage;
 
 interface SimplyConnectNotification
 {
