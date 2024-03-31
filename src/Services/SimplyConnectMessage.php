@@ -12,6 +12,8 @@ class SimplyConnectMessage
 
     private bool $hasManyPhoneNumbers = false;
 
+    private $callback = null;
+
     public function __construct()
     {
         $defaultDeviceId = config('simply_connect.default_device_id');
@@ -57,6 +59,11 @@ class SimplyConnectMessage
         return $this->phoneNumbers;
     }
 
+    public function getCallback(): ?callable
+    {
+        return $this->callback;
+    }
+
 
     //setters
     public function device($deviceId): static
@@ -100,6 +107,13 @@ class SimplyConnectMessage
     public function breakLine(): static
     {
         $this->text .= "\n";
+        return $this;
+    }
+
+    public function callback(callable $callback): static
+    {
+        $this->callback = $callback;
+
         return $this;
     }
 }

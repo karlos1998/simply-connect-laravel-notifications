@@ -45,6 +45,10 @@ class SimplyConnectChannel
             throw new CouldNotSendNotification($response->json('message'), $response->status(), $response->json('errors'));
         }
 
-        dd($response->json());
+        $callback = $scNotification->getCallback();
+        if($callback) {
+            $callback($response->json('id'));
+        }
+
     }
 }
