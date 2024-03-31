@@ -4,7 +4,7 @@ namespace Karlos3098\SimplyConnectLaravelNotifications\Services;
 
 class SimplyConnectMessage
 {
-    private string $text;
+    private string $text = '';
     private int $deviceId;
     private string $token;
 
@@ -83,6 +83,23 @@ class SimplyConnectMessage
 
         $this->hasManyPhoneNumbers = count($this->phoneNumbers) > 1;
 
+        return $this;
+    }
+
+    public function line(string $line): static
+    {
+        if(!empty($this->text)) {
+            $this->breakLine();
+        }
+
+        $this->text .= $line;
+
+        return $this;
+    }
+
+    public function breakLine(): static
+    {
+        $this->text .= "\n";
         return $this;
     }
 }
