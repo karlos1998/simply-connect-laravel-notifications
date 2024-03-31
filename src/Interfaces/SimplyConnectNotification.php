@@ -6,5 +6,5 @@ use Karlos3098\SimplyConnectLaravelNotifications\Services\SimplyConnectMessage;
 
 interface SimplyConnectNotification
 {
-    public function toSimplyConnect($notifiable): SimplyConnectMessage;
+    public function toSimplyConnect(object $notifiable): SimplyConnectMessage;
 }
