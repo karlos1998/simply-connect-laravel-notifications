@@ -19,6 +19,8 @@ class SimplyConnectChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        $notifiableIsPhoneNumberString = isset($notifiable->routes['simply-connect']) && is_array($notifiable->routes) && is_string($notifiable->routes['simply-connect']);
+
         /**
          * @var SimplyConnectMessage $scNotification
          */
@@ -33,9 +35,11 @@ class SimplyConnectChannel
             'phoneNumbers' => $scNotification->getPhoneNumbers(),
         ] : [
             'phoneNumber' => $scNotification->getPhoneNumber() ?? (
+                    $notifiableIsPhoneNumberString ? $notifiable->routes['simply-connect'] : (
                     in_array(HasDifferentPhoneNumberForSimplyConnect::class, class_implements($notifiable::class))
                         ? $notifiable->routeNotificationForSimplyConnect($notification)
                         : $notifiable->phone_number
+                    )
                 ),
         ];
 
