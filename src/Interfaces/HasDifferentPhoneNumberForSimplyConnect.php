@@ -6,5 +6,5 @@ use Illuminate\Notifications\Notification;
 
 interface HasDifferentPhoneNumberForSimplyConnect
 {
-    function routeNotificationForSimplyConnect(Notification $notification): string;
+    public function routeNotificationForSimplyConnect(Notification $notification): string;
 }

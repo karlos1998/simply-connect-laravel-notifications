@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Http;
 
 class MessageService
 {
-
     private string $token;
 
     public function __construct()
@@ -17,6 +16,7 @@ class MessageService
     public function setBearerToken(string $token): static
     {
         $this->token = $token;
+
         return $this;
     }
 

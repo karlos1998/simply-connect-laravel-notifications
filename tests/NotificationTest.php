@@ -1,11 +1,7 @@
 <?php
 
-
-use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
-use Karlos3098\SimplyConnectLaravelNotifications\Facades\MessageDetails;
 use Karlos3098\SimplyConnectLaravelNotifications\Interfaces\SimplyConnectNotification;
 use Karlos3098\SimplyConnectLaravelNotifications\Services\SimplyConnectMessage;
 
@@ -27,7 +23,7 @@ it('sends a post request to the simply-connect endpoint', function () {
         public function toSimplyConnect(object $notifiable): SimplyConnectMessage
         {
             return (new SimplyConnectMessage)
-                ->text("Test message");
+                ->text('Test message');
         }
     }
 
@@ -43,7 +39,7 @@ it('sends a post request to the simply-connect endpoint', function () {
             $request->data() == [
                 'deviceId' => 123,
                 'phoneNumber' => '+48123456789',
-                'text' => "Test message",
+                'text' => 'Test message',
             ];
     });
 

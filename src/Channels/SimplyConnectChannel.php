@@ -35,25 +35,25 @@ class SimplyConnectChannel
             'phoneNumbers' => $scNotification->getPhoneNumbers(),
         ] : [
             'phoneNumber' => $scNotification->getPhoneNumber() ?? (
-                    $notifiableIsPhoneNumberString ? $notifiable->routes['simply-connect'] : (
+                $notifiableIsPhoneNumberString ? $notifiable->routes['simply-connect'] : (
                     in_array(HasDifferentPhoneNumberForSimplyConnect::class, class_implements($notifiable::class))
                         ? $notifiable->routeNotificationForSimplyConnect($notification)
                         : $notifiable->phone_number
-                    )
-                ),
+                )
+            ),
         ];
 
         $response = Http::withToken($scNotification->getToken())
             ->baseUrl(config('simply_connect.service_path'))
             ->accept('application/json')
-            ->post("/api/messages", array_merge($data, $phoneNumbersData));
+            ->post('/api/messages', array_merge($data, $phoneNumbersData));
 
-        if($response->failed()) {
+        if ($response->failed()) {
             throw new CouldNotSendNotification($response->json('message'), $response->status(), $response->json('errors'));
         }
 
         $callback = $scNotification->getCallback();
-        if($callback) {
+        if ($callback) {
             $callback($response->json('id'));
         }
 

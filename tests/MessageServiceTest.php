@@ -1,7 +1,7 @@
 <?php
 
-use Karlos3098\SimplyConnectLaravelNotifications\Services\MessageService;
 use Illuminate\Support\Facades\Http;
+use Karlos3098\SimplyConnectLaravelNotifications\Services\MessageService;
 
 beforeEach(function () {
     config()->set('simply_connect.api_key', 'test_api_key');

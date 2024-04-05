@@ -16,7 +16,7 @@
         }
     ],
     "type": "library",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "autoload": {
         "psr-4": {
             "Karlos3098\\SimplyConnectLaravelNotifications\\": "src/"
@@ -28,12 +28,14 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest"
+        "test": "vendor/bin/pest",
+        "pint": "vendor/bin/pint"
     },
     "require": {
         "php": "^8.2|^8.3"
     },
     "require-dev": {
+        "laravel/pint": "^1.14",
         "orchestra/testbench": "^9.0.0||^8.22.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-arch": "^2.7",

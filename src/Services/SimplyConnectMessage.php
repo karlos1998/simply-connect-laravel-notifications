@@ -5,7 +5,9 @@ namespace Karlos3098\SimplyConnectLaravelNotifications\Services;
 class SimplyConnectMessage
 {
     private string $text = '';
+
     private int $deviceId;
+
     private string $token;
 
     private array $phoneNumbers = [];
@@ -17,16 +19,15 @@ class SimplyConnectMessage
     public function __construct()
     {
         $defaultDeviceId = config('simply_connect.default_device_id');
-        if($defaultDeviceId) {
+        if ($defaultDeviceId) {
             $this->deviceId = $defaultDeviceId;
         }
 
         $token = config('simply_connect.api_key');
-        if($token) {
+        if ($token) {
             $this->token = $token;
         }
     }
-
 
     //getters
     public function getText(): string
@@ -64,27 +65,29 @@ class SimplyConnectMessage
         return $this->callback;
     }
 
-
     //setters
     public function device($deviceId): static
     {
         $this->deviceId = $deviceId;
+
         return $this;
     }
 
     public function text(string $text): static
     {
         $this->text = $text;
+
         return $this;
     }
 
     public function token(string $token): static
     {
         $this->token = $token;
+
         return $this;
     }
 
-    public function phoneNumber(string ... $phoneNumbers): static
+    public function phoneNumber(string ...$phoneNumbers): static
     {
         $this->phoneNumbers = array_merge($this->phoneNumbers, $phoneNumbers);
 
@@ -95,7 +98,7 @@ class SimplyConnectMessage
 
     public function line(string $line): static
     {
-        if(!empty($this->text)) {
+        if (! empty($this->text)) {
             $this->breakLine();
         }
 
@@ -107,6 +110,7 @@ class SimplyConnectMessage
     public function breakLine(): static
     {
         $this->text .= "\n";
+
         return $this;
     }
 
