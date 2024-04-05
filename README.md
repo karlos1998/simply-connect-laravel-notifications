@@ -234,7 +234,7 @@ public function toSimplyConnect(object $notifiable): SimplyConnectMessage
 }
 ```
 ```php
-$message = MessageDetails::getMessageById($messageId, "other Bearer API token");
+$message = MessageDetails::setBearerToken("other Bearer API token")->getMessageById($messageId);
 ```
 
 <hr>
