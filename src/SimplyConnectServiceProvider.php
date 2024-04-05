@@ -19,14 +19,14 @@ class SimplyConnectServiceProvider extends ServiceProvider
         );
 
         $this->publishes([
-            __DIR__.'/config/simply_connect.php' => config_path('simply_connect.php'),
+            __DIR__ . '/../config/simply_connect.php' => config_path('simply_connect.php'),
         ], 'config');
     }
 
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/simply_connect.php', 'simply-connect'
+            __DIR__ . '/../config/simply_connect.php', 'simply-connect'
         );
     }
 }
