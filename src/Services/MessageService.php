@@ -28,8 +28,9 @@ class MessageService
     public function getMessageById(int $messageId): array
     {
         $response = Http::withToken($this->getBearerToken())
+            ->baseUrl(config('simply_connect.service_path'))
             ->accept('application/json')
-            ->get("https://panel.simply-connect.ovh/api/messages/$messageId");
+            ->get("/api/messages/$messageId");
 
         return $response->json();
     }

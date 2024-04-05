@@ -1,6 +1,20 @@
 {
     "name": "karlos3098/simply-connect-laravel-notifications",
     "description": "It allows you to send SMS from the simply-connect.ovh platform via Laravel notifications",
+    "keywords": [
+        ":vendor_name",
+        "laravel",
+        ":package_slug",
+        "notifications",
+        "sms"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "karlos1998",
+            "email": "fadeusz98@gmail.com"
+        }
+    ],
     "type": "library",
     "version": "0.0.1",
     "autoload": {
@@ -8,13 +22,33 @@
             "Karlos3098\\SimplyConnectLaravelNotifications\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "karlos1998",
-            "email": "fadeusz98@gmail.com"
+    "autoload-dev": {
+        "psr-4": {
+            "Karlos3098\\SimplyConnectLaravelNotifications\\Tests\\": "tests/"
         }
-    ],
-    "require": {},
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "require": {
+        "php": "^8.2|^8.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0.0||^8.22.0",
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-arch": "^2.7",
+        "pestphp/pest-plugin-laravel": "^2.3",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.3"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [

@@ -40,8 +40,9 @@ class SimplyConnectChannel
         ];
 
         $response = Http::withToken($scNotification->getToken())
+            ->baseUrl(config('simply_connect.service_path'))
             ->accept('application/json')
-            ->post("https://panel.simply-connect.ovh/api/messages", array_merge($data, $phoneNumbersData));
+            ->post("/api/messages", array_merge($data, $phoneNumbersData));
 
         if($response->failed()) {
             throw new CouldNotSendNotification($response->json('message'), $response->status(), $response->json('errors'));

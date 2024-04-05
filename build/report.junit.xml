@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/Users/karlos3098/PRACA/example-app/packages/karlos3098/simply-connect-laravel-notifications/phpunit.xml.dist" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.777552">
+    <testsuite name="VendorName Test Suite" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.777552">
+      <testsuite name="Tests\MessageServiceTest" file="tests/MessageServiceTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.057134">
+        <testcase name="it can fetch message details from service by id" file="tests/MessageServiceTest.php::it can fetch message details from service by id" class="Tests\MessageServiceTest" classname="Tests.MessageServiceTest" assertions="1" time="0.057134"/>
+      </testsuite>
+      <testsuite name="Tests\ExampleTest" file="tests/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007671">
+        <testcase name="it can test" file="tests/ExampleTest.php::it can test" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.007671"/>
+      </testsuite>
+      <testsuite name="Tests\MessageDetailsFacadeTest" file="tests/MessageDetailsFacadeTest.php" tests="5" assertions="5" errors="0" failures="0" skipped="0" time="0.712747">
+        <testcase name="it bearer from the configuration was used" file="tests/MessageDetailsFacadeTest.php::it bearer from the configuration was used" class="Tests\MessageDetailsFacadeTest" classname="Tests.MessageDetailsFacadeTest" assertions="1" time="0.269614"/>
+        <testcase name="it the server responds to requests" file="tests/MessageDetailsFacadeTest.php::it the server responds to requests" class="Tests\MessageDetailsFacadeTest" classname="Tests.MessageDetailsFacadeTest" assertions="1" time="0.144941"/>
+        <testcase name="it the base link from the configuration has been used" file="tests/MessageDetailsFacadeTest.php::it the base link from the configuration has been used" class="Tests\MessageDetailsFacadeTest" classname="Tests.MessageDetailsFacadeTest" assertions="1" time="0.146709"/>
+        <testcase name="it the link to download the message was correct" file="tests/MessageDetailsFacadeTest.php::it the link to download the message was correct" class="Tests\MessageDetailsFacadeTest" classname="Tests.MessageDetailsFacadeTest" assertions="1" time="0.148127"/>
+        <testcase name="it can fetch message details from facade by id" file="tests/MessageDetailsFacadeTest.php::it can fetch message details from facade by id" class="Tests\MessageDetailsFacadeTest" classname="Tests.MessageDetailsFacadeTest" assertions="1" time="0.003356"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
