@@ -16,6 +16,11 @@ Install:
 ```php
 composer require karlos3098/simply-connect-laravel-notifications
 ```
+
+```php
+php artisan vendor:publish --provider="Karlos3098\SimplyConnectLaravelNotifications\SimplyConnectServiceProvider" --tag=config
+```
+
 <br>
 
 Then add the API key from the simply-connect.ovh platform and the ID of the device from which messages will be sent to the .env
