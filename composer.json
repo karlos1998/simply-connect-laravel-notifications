@@ -2,9 +2,7 @@
     "name": "karlos3098/simply-connect-laravel-notifications",
     "description": "It allows you to send SMS from the simply-connect.ovh platform via Laravel notifications",
     "keywords": [
-        ":vendor_name",
         "laravel",
-        ":package_slug",
         "notifications",
         "sms"
     ],
