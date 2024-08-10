@@ -114,7 +114,7 @@ class User extends Authenticatable implements HasDifferentPhoneNumberForSimplyCo
 {
     use HasFactory, Notifiable;
 
-    public function routeNotificationForSimplyConnect(Notification $notification): string
+    public function routeNotificationForSimplyConnect(Notification $notification): array|string|null
     {
         return $this->phone_number; //or whatever you want
     }
