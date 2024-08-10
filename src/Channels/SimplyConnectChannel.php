@@ -31,17 +31,47 @@ class SimplyConnectChannel
             'text' => $scNotification->getText(),
         ];
 
-        $phoneNumbersData = $scNotification->hasManyPhoneNumbers() ? [
-            'phoneNumbers' => $scNotification->getPhoneNumbers(),
-        ] : [
-            'phoneNumber' => $scNotification->getPhoneNumber() ?? (
-                $notifiableIsPhoneNumberString ? $notifiable->routes['simply-connect'] : (
-                    in_array(HasDifferentPhoneNumberForSimplyConnect::class, class_implements($notifiable::class))
-                        ? $notifiable->routeNotificationForSimplyConnect($notification)
-                        : $notifiable->phone_number
-                )
-            ),
-        ];
+
+
+        ///////////////////////////////////
+        $phoneNumbersData = [];
+
+        if ($scNotification->hasManyPhoneNumbers()) {
+            $phoneNumbersData['phoneNumbers'] = $scNotification->getPhoneNumbers();
+        } else {
+            $phoneNumber = $scNotification->getPhoneNumber();
+
+            if (!$phoneNumber) {
+                if ($notifiableIsPhoneNumberString) {
+                    $phoneNumber = $notifiable->routes['simply-connect'];
+                } else if (in_array(HasDifferentPhoneNumberForSimplyConnect::class, class_implements($notifiable::class))) {
+                    $phoneNumber = $notifiable->routeNotificationForSimplyConnect($notification);
+                } else {
+                    $phoneNumber = $notifiable->phone_number;
+                }
+            }
+
+            if (is_array($phoneNumber)) {
+                if(count($phoneNumber) > 1) {
+                    $phoneNumbersData['phoneNumbers'] = $phoneNumber;
+                } else if (count($phoneNumber) == 1) {
+                    $phoneNumbersData['phoneNumber'] = $phoneNumber[0];
+                }
+            } else {
+                $phoneNumbersData['phoneNumber'] = $phoneNumber;
+            }
+        }
+        ///////////////////////////////////
+
+        if(
+            !isset($phoneNumbersData['phoneNumber']) &&
+            !isset($phoneNumbersData['phoneNumbers'])
+        ) return;
+
+        if(
+            isset($phoneNumbersData['phoneNumber']) &&
+            $phoneNumbersData['phoneNumber'] == ''
+        ) return;
 
         $response = Http::withToken($scNotification->getToken())
             ->baseUrl(config('simply_connect.service_path'))
