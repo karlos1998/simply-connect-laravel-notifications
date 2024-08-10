@@ -20,6 +20,12 @@ class SimplyConnectServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/simply_connect.php' => config_path('simply_connect.php'),
         ], 'config');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \Karlos3098\SimplyConnectLaravelNotifications\Commands\SimplyConnectNotificationMakeCommand::class,
+            ]);
+        }
     }
 
     public function register(): void
