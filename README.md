@@ -1,5 +1,7 @@
 <h3><center>Simply Connect Laravel Notifications</center></h3>
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/karlos)
+
 <br>
 
 <h4>A library dedicated to Laravel 10/11 introducing integration with <a href="https://simply-connect.ovh">Simply Connect</a> for the built-in notification class in Laravel</h4>
